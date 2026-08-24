@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fire Gate Chapel Int'l Church &mdash; The Fire Temple</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B2545;
+    --paper:#FFFFFF;
+    --paper-2:#F1F5FB;
+    --blue:#1B4F91;
+    --blue-dark:#0B2545;
+    --steel:#5B7CA3;
+    --yellow:#F5B400;
+    --yellow-soft:#FDE7A8;
+    --line: rgba(11,37,69,0.13);
+    --max: 1120px;
+    --radius: 2px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  ul{list-style:none;}
+
+  h1,h2,h3, .display{
+    font-family:'Cormorant', serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+    color:var(--ink);
+  }
+
+  .eyebrow{
+    font-family:'Inter', sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--blue);
+    font-weight:600;
+  }
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--yellow);
+    outline-offset:3px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .brand{
+    font-family:'Cormorant', serif;
+    font-size:1.3rem;
+    font-weight:600;
+    letter-spacing:0.01em;
+    line-height:1.2;
+  }
+  .brand span{color:var(--blue);}
+  .brand small{
+    display:block;
+    font-family:'Inter';
+    font-size:0.62rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--yellow);
+    font-weight:700;
+    margin-top:2px;
+  }
+  .navlinks{
+    display:flex; gap:32px;
+    font-size:0.86rem;
+    font-weight:500;
+  }
+  .navlinks a{
+    text-decoration:none;
+    padding:6px 2px;
+    border-bottom:1px solid transparent;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .navlinks a:hover{ border-color:var(--blue); }
+  .nav-cta{
+    background:var(--ink);
+    color:var(--paper);
+    padding:10px 20px;
+    font-size:0.82rem;
+    font-weight:600;
+    text-decoration:none;
+    border-radius:var(--radius);
+    white-space:nowrap;
+  }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; }
+
+  @media (max-width:900px){
+    .navlinks{ display:none; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:110px 0 90px;
+    border-bottom:1px solid var(--line);
+    background:var(--paper-2);
+  }
+  .glow{
+    position:absolute;
+    top:-240px; left:50%;
+    transform:translateX(-50%);
+    width:900px; height:900px;
+    border-radius:50%;
+    background:radial-gradient(circle, var(--yellow-soft) 0%, rgba(253,231,168,0) 65%);
+    opacity:0.7;
+    animation:breathe 9s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes breathe{
+    0%,100%{ opacity:0.5; transform:translateX(-50%) scale(1); }
+    50%{ opacity:0.8; transform:translateX(-50%) scale(1.06); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .glow{ animation:none; }
+  }
+  .hero-inner{
+    position:relative;
+    max-width:760px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.4vw, 4.4rem);
+    line-height:1.06;
+    margin:22px 0 26px;
+  }
+  .hero h1 em{ color:var(--blue); font-style:italic; }
+  .hero p.lede{
+    font-size:1.12rem;
+    max-width:540px;
+    color:#33465F;
+    margin-bottom:36px;
+  }
+  .hero-actions{
+    display:flex; gap:16px; flex-wrap:wrap;
+    margin-bottom:46px;
+  }
+  .btn{
+    display:inline-block;
+    padding:14px 26px;
+    font-size:0.88rem;
+    font-weight:600;
+    text-decoration:none;
+    border-radius:var(--radius);
+    border:1px solid var(--ink);
+    transition:background .2s ease, color .2s ease, transform .15s ease;
+  }
+  .btn-primary{ background:var(--ink); color:var(--paper); }
+  .btn-primary:hover{ background:var(--blue); border-color:var(--blue); transform:translateY(-1px); }
+  .btn-ghost{ background:transparent; color:var(--ink); }
+  .btn-ghost:hover{ background:var(--ink); color:var(--paper); transform:translateY(-1px); }
+  .btn-accent{ background:var(--yellow); border-color:var(--yellow); color:var(--ink); }
+  .btn-accent:hover{ background:#DDA200; border-color:#DDA200; transform:translateY(-1px); }
+
+  .hero-times{
+    display:flex; gap:28px; flex-wrap:wrap;
+    border-top:1px solid var(--line);
+    padding-top:26px;
+  }
+  .hero-times div{ font-size:0.86rem; }
+  .hero-times strong{ display:block; font-size:1.02rem; font-family:'Cormorant', serif; font-weight:600; }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding:100px 0; }
+  .section-head{
+    max-width:600px;
+    margin-bottom:56px;
+  }
+  .section-head h2{
+    font-size:clamp(2rem, 3.6vw, 2.7rem);
+    margin-top:14px;
+  }
+  .section-head p{
+    color:#3B4C63;
+    margin-top:14px;
+    font-size:1rem;
+  }
+
+  /* ---------- ABOUT ---------- */
+  #about{ background:var(--paper); border-bottom:1px solid var(--line); }
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:70px;
+    align-items:start;
+  }
+  .about-copy p{ margin-bottom:18px; color:#2F3F53; }
+  .about-copy p:first-of-type{
+    font-family:'Cormorant', serif;
+    font-size:1.5rem;
+    font-style:italic;
+    color:var(--ink);
+    line-height:1.45;
+  }
+  .values{ display:flex; flex-direction:column; gap:0; }
+  .value{
+    padding:24px 0;
+    border-top:1px solid var(--line);
+  }
+  .value:last-child{ border-bottom:1px solid var(--line); }
+  .value .eyebrow{ margin-bottom:8px; display:block; }
+  .value h3{ font-size:1.3rem; font-weight:600; margin-bottom:6px; }
+  .value p{ font-size:0.92rem; color:#3B4C63; }
+
+  @media (max-width:860px){
+    .about-grid{ grid-template-columns:1fr; gap:40px; }
+  }
+
+  /* ---------- SERVICE TIMES ---------- */
+  #services{ background:var(--paper-2); }
+  .times-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .time-card{
+    background:var(--paper);
+    padding:34px 30px;
+  }
+  .time-card .eyebrow{ margin-bottom:16px; display:block; }
+  .time-card h3{ font-size:1.5rem; margin-bottom:10px; }
+  .time-card p{ font-size:0.9rem; color:#3B4C63; }
+  .time-card .addr{
+    margin-top:22px; padding-top:18px; border-top:1px solid var(--line);
+    font-size:0.85rem; color:var(--blue); font-weight:600;
+  }
+
+  @media (max-width:860px){
+    .times-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- EVENTS ---------- */
+  #events{ background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .event-row{
+    display:grid;
+    grid-template-columns:120px 1fr auto;
+    gap:28px;
+    align-items:center;
+    padding:26px 0;
+    border-top:1px solid var(--line);
+  }
+  .event-row:last-child{ border-bottom:1px solid var(--line); }
+  .event-date{
+    font-family:'Cormorant', serif;
+    font-size:1.1rem;
+    color:var(--blue);
+    font-weight:600;
+  }
+  .event-date span{ display:block; font-family:'Inter'; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:#7C8CA3; font-weight:500; margin-top:2px; }
+  .event-info h3{ font-size:1.25rem; font-weight:600; margin-bottom:4px; }
+  .event-info p{ font-size:0.88rem; color:#3B4C63; }
+  .event-link{ font-size:0.84rem; font-weight:600; text-decoration:none; border-bottom:1px solid var(--ink); white-space:nowrap; }
+
+  @media (max-width:640px){
+    .event-row{ grid-template-columns:1fr; gap:8px; }
+    .event-link{ justify-self:start; }
+  }
+
+  /* ---------- SERMONS ---------- */
+  #sermons{ background:var(--paper-2); }
+  .sermon-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .sermon-card{
+    border:1px solid var(--line);
+    overflow:hidden;
+    background:var(--paper);
+  }
+  .sermon-thumb{
+    height:150px;
+    background:linear-gradient(135deg, var(--blue) 0%, var(--ink) 100%);
+    position:relative;
+  }
+  .sermon-thumb::after{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 70% 30%, var(--yellow) 0%, transparent 55%);
+    opacity:0.45;
+  }
+  .sermon-body{ padding:22px 24px 26px; }
+  .sermon-body .eyebrow{ margin-bottom:10px; display:block; }
+  .sermon-body h3{ font-size:1.25rem; margin-bottom:8px; }
+  .sermon-body p{ font-size:0.86rem; color:#3B4C63; margin-bottom:16px; }
+  .sermon-body a{ font-size:0.83rem; font-weight:600; text-decoration:none; border-bottom:1px solid var(--ink); }
+
+  @media (max-width:860px){
+    .sermon-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- GIVE ---------- */
+  #give{
+    background:var(--ink);
+    color:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  #give .eyebrow{ color:var(--yellow); }
+  #give h2{ color:var(--paper); }
+  #give .section-head p{ color:#C7D3E3; }
+  .give-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .give-copy p{ color:#C7D3E3; margin-bottom:24px; font-size:0.98rem; }
+  #give .btn-primary{ background:var(--yellow); border-color:var(--yellow); color:var(--ink); }
+  #give .btn-primary:hover{ background:#DDA200; border-color:#DDA200; }
+  #give .btn-ghost{ border-color:var(--steel); color:var(--paper); }
+  #give .btn-ghost:hover{ background:var(--paper); color:var(--ink); }
+  .give-ways{ display:flex; flex-direction:column; gap:22px; }
+  .give-way{ display:flex; gap:16px; align-items:flex-start; border-top:1px solid rgba(255,255,255,0.14); padding-top:20px; }
+  .give-way:first-child{ border-top:none; padding-top:0; }
+  .give-way .num{ font-family:'Cormorant', serif; font-size:1.4rem; color:var(--yellow); }
+  .give-way h3{ font-size:1.05rem; color:var(--paper); font-weight:600; margin-bottom:4px; }
+  .give-way p{ font-size:0.86rem; color:#AAB9CC; }
+
+  @media (max-width:860px){
+    .give-grid{ grid-template-columns:1fr; gap:36px; }
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+  }
+  .contact-info{ display:flex; flex-direction:column; gap:26px; }
+  .contact-info .item{ border-top:1px solid var(--line); padding-top:18px; }
+  .contact-info .item:first-child{ border-top:none; padding-top:0; }
+  .contact-info .eyebrow{ margin-bottom:6px; display:block; }
+  .contact-info p{ font-size:0.98rem; }
+  .social-row{ display:flex; gap:14px; margin-top:6px; }
+  .social-row a{
+    font-size:0.82rem; font-weight:600; text-decoration:none;
+    border:1px solid var(--line); padding:9px 16px; border-radius:var(--radius);
+    transition:background .2s ease, color .2s ease;
+  }
+  .social-row a:hover{ background:var(--ink); color:var(--paper); border-color:var(--ink); }
+
+  form{ display:flex; flex-direction:column; gap:16px; }
+  .field label{
+    display:block; font-size:0.76rem; font-weight:600; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--blue); margin-bottom:7px;
+  }
+  .field input, .field textarea{
+    width:100%;
+    border:1px solid var(--line);
+    background:var(--paper-2);
+    padding:13px 14px;
+    font-family:'Inter', sans-serif;
+    font-size:0.94rem;
+    color:var(--ink);
+    border-radius:var(--radius);
+  }
+  .field textarea{ resize:vertical; min-height:110px; }
+  form .btn{ align-self:flex-start; margin-top:6px; cursor:pointer; }
+
+  @media (max-width:860px){
+    .contact-grid{ grid-template-columns:1fr; gap:44px; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:50px 0 40px;
+    border-top:1px solid var(--line);
+    background:var(--paper-2);
+  }
+  .footer-row{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+  }
+  .footer-row .brand{ font-size:1.05rem; }
+  .footer-links{ display:flex; gap:24px; font-size:0.84rem; flex-wrap:wrap; }
+  .footer-links a{ text-decoration:none; }
+  .footer-links a:hover{ color:var(--blue); }
+  .footer-fine{ margin-top:30px; font-size:0.78rem; color:#5B6B80; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Fire Gate Chapel <span>Int'l</span> Church<small>The Fire Temple</small></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#events">Events</a>
+      <a href="#sermons">Sermons</a>
+      <a href="#give">Give</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="#services">Plan a Visit</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Welcome to the Fire Temple</span>
+    <h1>Come as you are.<br>Leave <em>on fire</em>.</h1>
+    <p class="lede">Fire Gate Chapel Int'l Church is a Spirit-filled house of worship in Dansoman, Accra &mdash; gathering to encounter God, grow in faith, and carry His fire into everyday life.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#services">Plan Your Visit</a>
+      <a class="btn btn-ghost" href="#sermons">Watch a Sermon</a>
+    </div>
+    <div class="hero-times">
+      <div><strong>Sun 8:00AM&ndash;12:00PM</strong>Sunday Worship</div>
+      <div><strong>Tue 9:00AM&ndash;12:00PM</strong>Tuesday Service</div>
+      <div><strong>Fri 6:00&ndash;8:30PM</strong>Friday Service</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <span class="eyebrow">About us</span>
+      <h2 style="margin:14px 0 26px;">A house of prayer, raising a fiery generation.</h2>
+      <p>"The Fire Temple isn't just our motto &mdash; it's what we contend for every time we gather: the presence and fire of God resting on ordinary people."</p>
+      <p>Fire Gate Chapel Int'l Church is home to a warm, growing community in Dansoman, near Livingstone. We believe worship, the Word, and prayer are meant to change lives, not just fill a Sunday.</p>
+      <p>Under the leadership of Rev. Dr. Godwin Ahiahornu, we gather across the week for worship, teaching, and prayer &mdash; and we'd love for you to join us.</p>
+    </div>
+    <div class="values">
+      <div class="value">
+        <span class="eyebrow">01</span>
+        <h3>Worship</h3>
+        <p>Passionate, Spirit-led worship that welcomes every person into God's presence.</p>
+      </div>
+      <div class="value">
+        <span class="eyebrow">02</span>
+        <h3>The Word</h3>
+        <p>Sound, practical teaching from Scripture that equips you for daily living.</p>
+      </div>
+      <div class="value">
+        <span class="eyebrow">03</span>
+        <h3>Prayer</h3>
+        <p>A praying church &mdash; midweek gatherings devoted to intercession and breakthrough.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Join us</span>
+      <h2>Service times</h2>
+      <p>All services hold at our Dansoman location, Petroleum Down, near Livingstone. First-time guests are warmly welcomed at every service.</p>
+    </div>
+    <div class="times-grid">
+      <div class="time-card">
+        <span class="eyebrow">Sunday</span>
+        <h3>8:00AM &ndash; 12:00PM</h3>
+        <p>Our main worship service &mdash; praise, the Word, and ministration led by Rev. Dr. Godwin Ahiahornu.</p>
+        <div class="addr">Dansoman, Petroleum Down &middot; near Livingstone</div>
+      </div>
+      <div class="time-card">
+        <span class="eyebrow">Tuesday</span>
+        <h3>9:00AM &ndash; 12:00PM</h3>
+        <p>Midweek teaching and prayer service, open to all members and visitors.</p>
+        <div class="addr">Dansoman, Petroleum Down &middot; near Livingstone</div>
+      </div>
+      <div class="time-card">
+        <span class="eyebrow">Friday</span>
+        <h3>6:00PM &ndash; 8:30PM</h3>
+        <p>An evening of fervent prayer and worship to close out the week in God's presence.</p>
+        <div class="addr">Dansoman, Petroleum Down &middot; near Livingstone</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What's happening</span>
+      <h2>Upcoming events</h2>
+      <p>A few of the gatherings coming up beyond our regular Sunday, Tuesday, and Friday services.</p>
+    </div>
+    <div class="event-list">
+      <div class="event-row">
+        <div class="event-date">Sep 6<span>Saturday</span></div>
+        <div class="event-info">
+          <h3>Fire Temple Prayer Vigil</h3>
+          <p>An all-night gathering of worship and intercession. All are welcome to attend.</p>
+        </div>
+        <a class="event-link" href="#contact">Details &rarr;</a>
+      </div>
+      <div class="event-row">
+        <div class="event-date">Sep 14<span>Sunday</span></div>
+        <div class="event-info">
+          <h3>New Members Meet &amp; Greet</h3>
+          <p>Curious about becoming part of Fire Gate Chapel? Meet the leadership after the Sunday service.</p>
+        </div>
+        <a class="event-link" href="#contact">Details &rarr;</a>
+      </div>
+      <div class="event-row">
+        <div class="event-date">Oct 3&ndash;5<span>Fri&ndash;Sun</span></div>
+        <div class="event-info">
+          <h3>Youth &amp; Young Adults Retreat</h3>
+          <p>A weekend away of worship, teaching, and fellowship for our youth and young adults.</p>
+        </div>
+        <a class="event-link" href="#contact">Details &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sermons">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Recent messages</span>
+      <h2>Sermons</h2>
+      <p>Missed a service, or want to revisit one? Recent messages from Rev. Dr. Godwin Ahiahornu are posted here through the week.</p>
+    </div>
+    <div class="sermon-grid">
+      <div class="sermon-card">
+        <div class="sermon-thumb"></div>
+        <div class="sermon-body">
+          <span class="eyebrow">Aug 17, 2026</span>
+          <h3>Carrying the Fire</h3>
+          <p>Rev. Dr. Godwin Ahiahornu &mdash; on keeping God's presence alive beyond the four walls of church.</p>
+          <a href="#">Watch sermon &rarr;</a>
+        </div>
+      </div>
+      <div class="sermon-card">
+        <div class="sermon-thumb"></div>
+        <div class="sermon-body">
+          <span class="eyebrow">Aug 10, 2026</span>
+          <h3>The Gate That Never Shuts</h3>
+          <p>Rev. Dr. Godwin Ahiahornu &mdash; a message on access, faith, and standing at the gate in prayer.</p>
+          <a href="#">Watch sermon &rarr;</a>
+        </div>
+      </div>
+      <div class="sermon-card">
+        <div class="sermon-thumb"></div>
+        <div class="sermon-body">
+          <span class="eyebrow">Aug 3, 2026</span>
+          <h3>Foundations of Faith</h3>
+          <p>Rev. Dr. Godwin Ahiahornu &mdash; the second in our series on building a life that lasts.</p>
+          <a href="#">Watch sermon &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="give">
+  <div class="wrap give-grid">
+    <div class="give-copy">
+      <span class="eyebrow">Support the church</span>
+      <h2 style="margin:14px 0 22px;">Give toward the work here.</h2>
+      <p>Your giving funds our weekly services, outreach, and the ministries God has entrusted to Fire Gate Chapel Int'l Church. Every gift is received with gratitude.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">Give Online</a>
+        <a class="btn btn-ghost" href="#contact">Other Ways to Give</a>
+      </div>
+    </div>
+    <div class="give-ways">
+      <div class="give-way">
+        <span class="num">01</span>
+        <div><h3>Mobile Money / WhatsApp</h3><p>Reach out via 0552267222 or 0538315515 for giving details.</p></div>
+      </div>
+      <div class="give-way">
+        <span class="num">02</span>
+        <div><h3>During a service</h3><p>Offering is received during each Sunday, Tuesday, and Friday service.</p></div>
+      </div>
+      <div class="give-way">
+        <span class="num">03</span>
+        <div><h3>In person</h3><p>Speak with the church office at our Dansoman location.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <span class="eyebrow">Get in touch</span>
+      <h2 style="margin:14px 0 10px;">We'd love to hear from you.</h2>
+      <div class="item" style="margin-top:20px;">
+        <span class="eyebrow">Address</span>
+        <p>Dansoman, Petroleum Down &middot; near Livingstone, Accra</p>
+      </div>
+      <div class="item">
+        <span class="eyebrow">Phone / WhatsApp</span>
+        <p>0552267222 &middot; 0538315515</p>
+      </div>
+      <div class="item">
+        <span class="eyebrow">Email</span>
+        <p>firegatechapelint@gmail.com</p>
+      </div>
+      <div class="item">
+        <span class="eyebrow">Follow us</span>
+        <div class="social-row">
+          <a href="#">Facebook</a>
+          <a href="#">TikTok</a>
+        </div>
+      </div>
+    </div>
+    <form>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Your name">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="How can we help?"></textarea>
+      </div>
+      <button type="button" class="btn btn-primary">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="brand">Fire Gate Chapel <span style="color:var(--blue);">Int'l</span> Church</div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#sermons">Sermons</a>
+        <a href="#give">Give</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <p class="footer-fine">&copy; 2026 Fire Gate Chapel Int'l Church &mdash; The Fire Temple. Dansoman, Petroleum Down, near Livingstone, Accra. All are welcome.</p>
+  </div>
+</footer>
+
+</body>
+</html>
