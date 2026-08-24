@@ -632,20 +632,25 @@
         </div>
       </div>
     </div>
-    <form>
+    <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p style="position:absolute; left:-9999px;">
+        <label>Leave this field blank: <input name="bot-field"></label>
+      </p>
       <div class="field">
         <label for="name">Name</label>
-        <input id="name" type="text" placeholder="Your name">
+        <input id="name" name="name" type="text" placeholder="Your name" required>
       </div>
       <div class="field">
         <label for="email">Email</label>
-        <input id="email" type="email" placeholder="you@example.com">
+        <input id="email" name="email" type="email" placeholder="you@example.com" required>
       </div>
       <div class="field">
         <label for="message">Message</label>
-        <textarea id="message" placeholder="How can we help?"></textarea>
+        <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
       </div>
-      <button type="button" class="btn btn-primary">Send Message</button>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+      <p id="form-status" style="font-size:0.86rem; color:var(--blue); display:none;">Thank you &mdash; your message has been sent. We'll get back to you soon.</p>
     </form>
   </div>
 </section>
@@ -666,5 +671,28 @@
   </div>
 </footer>
 
+<script>
+  var form = document.getElementById('contact-form');
+  var status = document.getElementById('form-status');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      })
+        .then(function () {
+          form.reset();
+          form.style.display = 'none';
+          status.style.display = 'block';
+        })
+        .catch(function () {
+          alert('Sorry, something went wrong sending your message. Please try again or reach us directly by phone or email.');
+        });
+    });
+  }
+</script>
 </body>
 </html>
