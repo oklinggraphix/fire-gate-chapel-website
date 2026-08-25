@@ -410,13 +410,20 @@
   .footer-links a{ text-decoration:none; }
   .footer-links a:hover{ color:var(--blue); }
   .footer-fine{ margin-top:30px; font-size:0.78rem; color:#5B6B80; }
+
+  .brand-lockup{ display:flex; align-items:center; gap:12px; }
+  .logo-img{ height:52px; width:52px; object-fit:contain; }
+  footer .logo-img{ height:44px; width:44px; }
 </style>
 </head>
 <body>
 
 <header>
   <nav class="wrap">
-    <div class="brand">Fire Gate Chapel <span>Int'l</span> Church<small>The Fire Temple</small></div>
+    <div class="brand-lockup">
+      <img src="logo.png" alt="Fire Gate Chapel Int'l Church logo" class="logo-img">
+      <div class="brand">Fire Gate Chapel <span>Int'l</span> Church<small>The Fire Temple</small></div>
+    </div>
     <div class="navlinks">
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -753,7 +760,10 @@
 <footer>
   <div class="wrap">
     <div class="footer-row">
-      <div class="brand">Fire Gate Chapel <span style="color:var(--blue);">Int'l</span> Church</div>
+      <div class="brand-lockup">
+        <img src="logo.png" alt="Fire Gate Chapel Int'l Church logo" class="logo-img">
+        <div class="brand">Fire Gate Chapel <span style="color:var(--blue);">Int'l</span> Church</div>
+      </div>
       <div class="footer-links">
         <a href="#about">About</a>
         <a href="#services">Services</a>
