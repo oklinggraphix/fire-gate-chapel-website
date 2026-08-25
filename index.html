@@ -324,6 +324,23 @@
     .sermon-grid{ grid-template-columns:1fr; }
   }
 
+  /* ---------- AUDIO SERMONS ---------- */
+  #audio-sermons{ background:var(--paper); }
+  .audio-list{ display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line); }
+  .audio-item{ background:var(--paper); padding:26px 28px; display:flex; flex-direction:column; gap:14px; }
+  .audio-info{ display:flex; flex-direction:column; gap:4px; }
+  .audio-info .eyebrow{ margin-bottom:2px; }
+  .audio-info h3{ font-size:1.2rem; }
+  .audio-info p{ font-size:0.86rem; color:#3B4C63; }
+  .audio-item audio{ width:100%; accent-color:var(--blue); }
+  .audio-empty{
+    border:1px dashed var(--line);
+    padding:48px 28px;
+    text-align:center;
+    color:#5B6B80;
+    font-size:0.92rem;
+  }
+
   /* ---------- GIVE ---------- */
   #give{
     background:var(--ink);
@@ -429,6 +446,7 @@
       <a href="#services">Services</a>
       <a href="#events">Events</a>
       <a href="#sermons">Sermons</a>
+      <a href="#audio-sermons">Audio</a>
       <a href="#give">Give</a>
       <a href="#contact">Contact</a>
     </div>
@@ -872,6 +890,32 @@
   </div>
 </section>
 
+<section id="audio-sermons">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Listen</span>
+      <h2>Audio Sermons</h2>
+      <p>Prefer to listen? Audio versions of our messages will be posted here &mdash; perfect for the commute, a walk, or a quiet moment during the week.</p>
+    </div>
+    <div class="audio-list" id="audio-list">
+      <!-- Audio sermon items go here. Example structure for when a file is ready:
+      <div class="audio-item">
+        <div class="audio-info">
+          <span class="eyebrow">Date</span>
+          <h3>Sermon Title</h3>
+          <p>Speaker Name</p>
+        </div>
+        <audio controls preload="none">
+          <source src="audio-file-name.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+      -->
+    </div>
+    <div class="audio-empty" id="audio-empty">Audio sermons are coming soon &mdash; check back shortly.</div>
+  </div>
+</section>
+
 <section id="give">
   <div class="wrap give-grid">
     <div class="give-copy">
@@ -959,6 +1003,7 @@
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#sermons">Sermons</a>
+        <a href="#audio-sermons">Audio</a>
         <a href="#give">Give</a>
         <a href="#contact">Contact</a>
       </div>
