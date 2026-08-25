@@ -1,0 +1,81 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B2545"/>
+      <stop offset="100%" stop-color="#1B4F91"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FDE7A8" stop-opacity="0.95"/>
+      <stop offset="45%" stop-color="#F5B400" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#F5B400" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ground" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#12305A"/>
+      <stop offset="100%" stop-color="#0B2545"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect x="0" y="0" width="800" height="450" fill="url(#sky)"/>
+
+  <!-- Stars -->
+  <g fill="#FFFFFF" opacity="0.55">
+    <circle cx="90" cy="70" r="1.6"/>
+    <circle cx="150" cy="130" r="1.2"/>
+    <circle cx="230" cy="60" r="1.8"/>
+    <circle cx="310" cy="110" r="1.2"/>
+    <circle cx="130" cy="200" r="1.4"/>
+    <circle cx="60" cy="160" r="1.2"/>
+    <circle cx="400" cy="50" r="1.4"/>
+    <circle cx="470" cy="90" r="1.2"/>
+    <circle cx="200" cy="40" r="1.2"/>
+  </g>
+
+  <!-- Distant hills -->
+  <path d="M0,300 Q120,255 260,285 T520,270 T800,290 V450 H0 Z" fill="#14356A" opacity="0.65"/>
+  <path d="M0,340 Q150,300 320,330 T650,315 T800,335 V450 H0 Z" fill="url(#ground)"/>
+
+  <!-- Guiding light glow -->
+  <circle cx="610" cy="130" r="150" fill="url(#glow)"/>
+
+  <!-- Flame at the destination -->
+  <path d="M610,80
+           C595,105 585,125 590,145
+           C592,158 602,168 612,168
+           C624,168 634,157 634,143
+           C634,128 622,118 622,105
+           C622,118 616,122 614,112
+           C610,98 615,90 610,80 Z"
+        fill="#F5B400"/>
+  <path d="M610,105
+           C602,120 598,132 601,144
+           C603,152 609,157 614,157
+           C621,157 627,151 627,143
+           C627,133 620,127 618,118
+           C617,127 613,129 612,122
+           C609,114 613,110 610,105 Z"
+        fill="#FDE7A8"/>
+
+  <!-- Winding path toward the light -->
+  <path d="M40,430 C130,410 150,380 110,350 C70,320 90,290 160,275 C240,258 260,230 220,205 C185,183 210,160 280,150 C360,138 420,150 460,190 C500,225 540,200 580,160"
+        fill="none" stroke="#F5B400" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 22" opacity="0.9"/>
+
+  <!-- Small footstep markers along the path -->
+  <g fill="#FFFFFF" opacity="0.85">
+    <circle cx="52" cy="424" r="4"/>
+    <circle cx="118" cy="352" r="4"/>
+    <circle cx="168" cy="277" r="4"/>
+    <circle cx="252" cy="222" r="4"/>
+    <circle cx="360" cy="147" r="4"/>
+    <circle cx="470" cy="182" r="4"/>
+    <circle cx="560" cy="172" r="4"/>
+  </g>
+
+  <!-- Compass rose, lower right, subtle -->
+  <g transform="translate(700,370)" opacity="0.5">
+    <circle r="36" fill="none" stroke="#F5B400" stroke-width="1.5"/>
+    <line x1="0" y1="-36" x2="0" y2="36" stroke="#F5B400" stroke-width="1"/>
+    <line x1="-36" y1="0" x2="36" y2="0" stroke="#F5B400" stroke-width="1"/>
+    <path d="M0,-26 L7,0 L0,26 L-7,0 Z" fill="#F5B400"/>
+  </g>
+</svg>
