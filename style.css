@@ -384,6 +384,12 @@
     transition:background .2s ease, transform .2s ease;
   }
   .event-row:hover{ background:var(--paper-2); transform:translateX(4px); }
+  .event-flyer-thumb{
+    width:120px;
+    border-radius:14px 14px 4px 14px;
+    margin-bottom:14px;
+    box-shadow:0 8px 20px rgba(6,26,51,0.15);
+  }
   .event-date{
     font-family:'Space Grotesk', sans-serif;
     font-size:1.15rem;
