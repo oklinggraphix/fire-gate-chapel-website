@@ -644,3 +644,8 @@ footer{background:var(--ink)}.fcols{display:grid;grid-template-columns:1.3fr 1fr
 .tile span{background:var(--yellow)}
 .tile.gold{background:linear-gradient(135deg,var(--blue-bright),#A9D2EE);color:var(--ink)}
 .collage::after{background:linear-gradient(180deg,rgba(15,60,101,.85),rgba(16,54,125,.7))}
+
+/* fix: pastor card text hidden by About-section colour rules */
+#about .pastor-info .eyebrow{color:var(--yellow)}
+#about .pastor-info h3{color:#fff}
+#about .about-copy .pastor-info p,#about .about-copy .pastor-info p:first-of-type{color:rgba(255,255,255,.9);font-family:'Inter',sans-serif;font-style:normal;font-size:.9rem;line-height:1.6;margin:0}
