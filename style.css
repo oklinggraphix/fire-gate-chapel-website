@@ -619,3 +619,17 @@ footer{background:var(--ink)}.fcols{display:grid;grid-template-columns:1.3fr 1fr
 .fcols a.fb{display:inline-block;background:var(--yellow);color:var(--ink);font-weight:700;padding:8px 16px;border-radius:100px;margin-right:8px}
 @media(max-width:860px){.tile-grid{grid-template-columns:1fr 1fr}.fcols{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.tile-grid,.fcols{grid-template-columns:1fr}}
+
+/* ===== HERO PHOTO COLLAGE ===== */
+.hero{background:var(--ink);padding:110px 0 130px}
+.hero::before{content:none}
+.collage{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:4px}
+.collage i{background:url('congregation.jpg') var(--p)/260% auto;filter:grayscale(1) contrast(1.15)}
+.collage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,26,51,.82),rgba(27,79,145,.72));mix-blend-mode:multiply}
+.collage::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at center,rgba(6,26,51,.55),rgba(6,26,51,.15) 70%)}
+.hero-inner{z-index:2}
+.hero .eyebrow{color:#fff;letter-spacing:.2em;font-size:.8rem}
+.hero h1{font-size:clamp(2.6rem,7vw,5.2rem);line-height:.98}
+.hero h1 em{font-size:clamp(5.5rem,22vw,13rem);line-height:.9;margin-top:6px}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:34px;z-index:3;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 34' preserveAspectRatio='none'%3E%3Cpath d='M0 34V14l30 8 40-12 45 14 50-16 40 12 55-10 45 14 60-14 40 10 55-12 50 14 60-10 45 12 55-14 50 10 60-8 45 12 55-12 50 10 60-14 45 12 55-10 50 14 60-12 45 8 55-12 35 8V34z' fill='%23F5B400'/%3E%3C/svg%3E") center/100% 100%}
+@media(max-width:700px){.collage{grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(4,1fr)}}
